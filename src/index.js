@@ -3,11 +3,49 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import HomePage from './components/pages/home/homePageTest';
+import CreatePage from './components/pages/create/createPage';
+import SearchResult from './components/pages/searchResult/searchResult';
+import ViewWorkout from './components/pages/workoutView/viewWorkout';
+import UserProfile from './components/pages/userProfilePage.js/userProfile';
+
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/home/:userData",
+    element: <HomePage />,
+  },
+  {
+    path: "/create/:userData",
+    element: <CreatePage />,
+  },
+  {
+    path: "/searchResult/:username",
+    element: <SearchResult />,
+  },
+  {
+    path: "/viewWorkout/:workout",
+    element: <ViewWorkout />,
+  },
+  {
+    path: "/userProfile/:userData",
+    element: <UserProfile />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
